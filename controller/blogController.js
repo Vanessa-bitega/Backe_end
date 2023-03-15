@@ -8,7 +8,6 @@ async function blogcontroller(req, res) {
 
     if (method === 'POST') {
       const { title, snippet, body } = req.body;
-      console.log(req.body)
       const newBlog = await Blog.create( {title, snippet, body} );
         res.status(201).json({
         message: 'New blog created successfully',
