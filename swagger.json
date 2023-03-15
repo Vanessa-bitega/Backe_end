@@ -1,0 +1,484 @@
+{
+    "swagger": "2.0",
+  "info": {
+    "title": "Vanessa-Brand-API",
+    "description": "API description in Markdown.",
+    "version": "1.0.0"
+  },
+  "host": "localhost:5000",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "paths":{
+    "/login": {
+        "post": {
+          "tags": [
+            "User"
+          ],
+          "summary": "Login with email and password",
+          "description": "",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "email",
+              "in": "formData",
+              "description": "Email of the user",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "password",
+              "in": "formData",
+              "description": "Password of the user",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": ""
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "schema": {
+                "$ref": ""
+              }
+            },
+            "500": {
+              "description": "Internal Server Error",
+              "schema": {
+                "$ref": ""
+              }
+            }
+          }
+        }
+      },
+      "/user": {
+        "post": {
+          "tags": [
+            "User"
+          ],
+          "summary": "Signup with email and password",
+          "description": "",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+          
+            {
+              "name": "email",
+              "in": "formData",
+              "description": "Email of the user",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "password",
+              "in": "formData",
+              "description": "Password of the user",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": ""
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "schema": {
+                "$ref": ""
+              }
+            },
+            "500": {
+              "description": "Internal Server Error",
+              "schema": {
+                "$ref": ""
+              }
+            }
+          }
+        }
+      },
+     
+
+  "/blog/Create": {
+    "post": {
+      "tags": [
+        "Blog"
+      ],
+      "summary": "Create a new blog post",
+      "description": "",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [
+        {
+          "name": "title",
+          "in": "formData",
+          "description": "Title of the blog post",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "snippet",
+          "in": "formData",
+          "description": "snippet of the blog post",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "in": "formData",
+          "description": "content of the blog post",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": ""
+          }
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema": {
+            "$ref": ""
+          }
+        },
+        "500": {
+          "description": "Internal Server Error",
+          "schema": {
+            "$ref": ""
+          }
+        }
+      }
+    }
+  },
+  "/blogs": {
+    "get": {
+      "tags": [
+        "Blog"
+      ],
+      "summary": "Get all blog posts",
+      "description": "",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": ""
+          }
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema": {
+            "$ref": ""
+          }
+        },
+        "500": {
+          "description": "Internal Server Error",
+          "schema": {
+            "$ref": ""
+          }
+        }
+      }
+    }
+  },
+  "/blog/{id}": {
+    "get": {
+      "tags": [
+        "Blog"
+      ],
+      "summary": "Get a blog post by id",
+      "description": "",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "Id of the blog post",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": ""
+          }
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema": {
+            "$ref": ""
+          }
+        },
+        "500": {
+          "description": "Internal Server Error",
+          "schema": {
+            "$ref": ""
+          }
+        }
+      }
+    }
+  },
+  "/blog/update/{id}": {
+    "put": {
+      "tags": [
+        "Blog"
+      ],
+      "summary": "Update a blog post",
+      "description": "",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "Id of the blog post",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "in": "formData",
+          "description": "Title of the blog post",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "snippet",
+          "in": "formData",
+          "description": "snippet of the blog post",
+          "required": true,
+          "type": "string"
+        },
+        
+        {
+          "name": "body",
+          "in": "formData",
+          "description": "content of the blog post",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": ""
+          }
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema": {
+            "$ref": ""
+          }
+        },
+        "500": {
+          "description": "Internal Server Error",
+          "schema": {
+            "$ref": ""
+          }
+        }
+      }
+    }
+  },
+  "/blog/delete/{id}": {
+    "delete": {
+      "tags": [
+        "Blog"
+      ],
+      "summary": "Delete a blog post",
+      "description": "",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "Id of the blog post",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": ""
+          }
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema": {
+            "$ref": ""
+          }
+        },
+        "500": {
+          "description": "Internal Server Error",
+          "schema": {
+            "$ref": ""
+          }
+        }
+      }
+    }
+  },
+  "/blog/:blogId/comment": {
+    "post": {
+      "tags": [
+        "Comments"
+      ],
+      "summary": "Add a comment to a blog post",
+      "description": "",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [
+        {
+          "name": ":blogId",
+          "in": "path",
+          "description": "Id of the blog post",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "in": "formData",
+          "description": " Name of the commentetor",
+          "required": true,
+          "type": "string"
+        },
+       
+        {
+          "name": "commentBody",
+          "in": "formData",
+          "description": "Body of the comment",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": ""
+          }
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema": {
+            "$ref": ""
+          }
+        },
+        "500": {
+          "description": "Internal Server Error",
+          "schema": {
+            "$ref": ""
+          }
+        }
+      }
+    }
+  },
+  "/blog/:blogId/comments": {
+    "get": {
+      "tags": [
+        "Comments"
+      ],
+      "summary": "Get all comments",
+      "description": "",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": ""
+          }
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema": {
+            "$ref": ""
+          }
+        },
+        "500": {
+          "description": "Internal Server Error",
+          "schema": {
+            "$ref": ""
+          }
+        }
+      }
+    }
+  },
+  "/blog/{id}/comment/{_id}": {
+    "delete": {
+      "tags": [
+        "Comments"
+      ],
+      "summary": "Delete a blog comment",
+      "description": "",
+      "produces": [
+        "application/json"
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "description": "Id of the blog",
+          "required": true,
+          "type": "string"
+        },
+        {
+            "name": "_id",
+            "in": "path",
+            "description": "Id of the comment",
+            "required": true,
+            "type": "string"
+          }
+      ],
+      "responses": {
+        "200": {
+          "description": "OK",
+          "schema": {
+            "$ref": ""
+          }
+        },
+        "401": {
+          "description": "Unauthorized",
+          "schema": {
+            "$ref": ""
+          }
+        },
+        "500": {
+          "description": "Internal Server Error",
+          "schema": {
+            "$ref": ""
+          }
+        }
+      }
+    }
+  }
+  }
+}

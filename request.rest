@@ -1,0 +1,29 @@
+GET  http://localhost:5000/api/blogs
+
+####
+
+
+POST  http://localhost:5000/api/blog/Create
+Content-Type: application/json
+
+{ 
+    "title": "",
+    "snippet": "",
+    "body": ""
+
+}
+####
+
+DELETE  http://localhost:5000/api/blog/delete/640a4f176d454204575c4ddc
+
+####
+
+PUT   http://localhost:5000/api//blog/update/640a50476d454204575c4de5
+Content-Type: application/json
+
+{ 
+    "title": "life",
+    "snippet": "short &meaningless",
+    "body": "live it to the fullest"
+
+}
