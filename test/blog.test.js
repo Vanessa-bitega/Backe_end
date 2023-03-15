@@ -49,17 +49,18 @@ describe('Blog API', function() {
   });
 
   //Test the retrieval of a specific blog post
-//   describe('GET /blog/:id', function() {
-//     it('should return a specific blog post', function(done) {
-//       chai.request(app)
-//         .get(`/blog/${blogId}`)
-//         .end(function(err, res) {
-//           expect(res).to.have.status(200);
-//           expect(res.body._id).to.equal(blogId);
-//           done();
-//         });
-//     });
-//   });
+  describe('GET /blog/:id', function() {
+    it('should return a specific blog post', function(done) {
+      chai.request(app)
+        .get(`/api/blog/${blogId}`)
+        .end(function(err, res) {
+          expect(res).to.have.status(200);
+          expect(res.body._id).to.equal(blogId);
+         
+        });
+         done();
+    });
+  });
 
 //   //Test the update of a blog post
 //   describe('PUT /blog/update/:id', function() {
