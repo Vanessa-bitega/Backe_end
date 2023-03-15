@@ -49,32 +49,35 @@ describe('Blog API', function() {
   });
 
   //Test the retrieval of a specific blog post
-  describe('GET /blog/:id', function() {
+  describe('GET /blog/{id}', function() {
     it('should return a specific blog post', function(done) {
+      const blogId = "640a4c87951305cfc1085e80"
       chai.request(app)
         .get(`/api/blog/${blogId}`)
         .end(function(err, res) {
-          expect(res).to.have.status(200);
+          res.should.have.status(200);
           expect(res.body._id).to.equal(blogId);
          
         });
-         done();
+     done();
     });
-  });
+       
+   });
 
 //   //Test the update of a blog post
-//   describe('PUT /blog/update/:id', function() {
-//     it('should update a specific blog post', function(done) {
-//       chai.request(app)
-//         .put(`/blog/${blogId}`)
-//         .send({title: 'Updated Test Post'})
-//         .end(function(err, res) {
-//           expect(res).to.have.status(200);
-//           expect(res.body.title).to.equal('Updated Test Post');
-//           done();
-//         });
-//     });
-//   });
+  // describe('PUT /blog/update/:id', function() {
+  //   it('should update a specific blog post', function(done) {
+  //     chai.request(app)
+  //       .put(`/api/blog/${blogId}`)
+  //       .send({title: 'Updated Test Post'})
+  //       .end(function(err, res) {
+  //         expect(res).to.have.status(200);
+  //         expect(res.body.title).to.equal('Updated Test Post');
+         
+  //       });
+  //      done(); 
+  //   });
+  // });
 
 //  // Test the deletion of a blog post
 //   describe('DELETE /blog/delete/:id', function() {
@@ -89,5 +92,4 @@ describe('Blog API', function() {
 //     });
 //   });
 
-
-});
+  });
