@@ -93,7 +93,7 @@ describe('Blog API', function() {
     it('should delete a specific blog post', function(done) {
       const blogId = "640a4c87951305cfc1085e80";
       chai.request(app)
-        .delete(`/blog/delete/${blogId}`)
+        .delete(`/api/blog/delete/${blogId}`)
         .end(function(err, res) {
           expect(res).to.have.status(200);
           expect(res.body.message).to.equal('Blog post deleted successfully.');
