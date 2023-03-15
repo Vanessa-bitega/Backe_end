@@ -30,37 +30,28 @@ describe('Blog API', function() {
         });
        
     });
-});
 
 
+  //Test the retrieval of all blog posts
+  describe('GET /blogs', function() {
+    it('should return an array of all blog posts', function(done) {
+      chai.request(app)
+        .get('/api/blogs')
+        .end(function(err, res) {
+          expect(res).to.have.status(200);
+          expect(res.body).to.be.an('array');
+          expect(res.body.length).to.be.greaterThan(0);
+          
+        });
+        done();
+    });
+    
+  });
 
-
-
-
-
-
-
-
-
-
-  // Test the retrieval of all blog posts
-//   describe('GET /blogs', function() {
-//     it('should return an array of all blog posts', function(done) {
-//       chai.request(Blog)
-//         .get('/blogs')
-//         .end(function(err, res) {
-//           expect(res).to.have.status(200);
-//           expect(res.body).to.be.an('array');
-//           expect(res.body.length).to.be.greaterThan(0);
-//           done();
-//         });
-//     });
-//   });
-
-  // Test the retrieval of a specific blog post
+  //Test the retrieval of a specific blog post
 //   describe('GET /blog/:id', function() {
 //     it('should return a specific blog post', function(done) {
-//       chai.request(Blog)
+//       chai.request(app)
 //         .get(`/blog/${blogId}`)
 //         .end(function(err, res) {
 //           expect(res).to.have.status(200);
@@ -70,10 +61,10 @@ describe('Blog API', function() {
 //     });
 //   });
 
-  // Test the update of a blog post
+//   //Test the update of a blog post
 //   describe('PUT /blog/update/:id', function() {
 //     it('should update a specific blog post', function(done) {
-//       chai.request(Blog)
+//       chai.request(app)
 //         .put(`/blog/${blogId}`)
 //         .send({title: 'Updated Test Post'})
 //         .end(function(err, res) {
@@ -84,7 +75,7 @@ describe('Blog API', function() {
 //     });
 //   });
 
-  // Test the deletion of a blog post
+//  // Test the deletion of a blog post
 //   describe('DELETE /blog/delete/:id', function() {
 //     it('should delete a specific blog post', function(done) {
 //       chai.request(Blog)
@@ -98,3 +89,4 @@ describe('Blog API', function() {
 //   });
 
 
+});
