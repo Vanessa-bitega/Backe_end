@@ -31,7 +31,7 @@ describe('Comments API', function() {
     });
 
     describe('GET /blog/:blogId/comments', function() {
-        it('should return an array of all blog posts', function(done) {
+        it('should return an array of all blog comments', function(done) {
           chai.request(app)
             .get('/api/blog/:blogId/comments')
             .end(function(err, res) {
@@ -43,6 +43,21 @@ describe('Comments API', function() {
             done();
         });
         
+      });
+
+      describe('DELETE /blog/:blogId/comment/:id', function() {
+        it('should delete a specific blog comment', function(done) {
+          const blogId = "640a1d5b4cfcf3ca59a8808e";
+          const id = "640efad9b905d9cc9507caaf "
+          chai.request(app)
+            .delete(`/api//blog/${blogId}/comment/${id}`)
+            .end(function(err, res) {
+              expect(res).to.have.status(200);
+              expect(res.body.message).to.equal('Blog post deleted successfully.');
+              
+            });
+           done(); 
+        });
       });
     
 
