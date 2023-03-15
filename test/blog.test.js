@@ -88,17 +88,19 @@ describe('Blog API', function() {
     });
   });
 
-//  // Test the deletion of a blog post
-//   describe('DELETE /blog/delete/:id', function() {
-//     it('should delete a specific blog post', function(done) {
-//       chai.request(Blog)
-//         .delete(`/blog/${blogId}`)
-//         .end(function(err, res) {
-//           expect(res).to.have.status(200);
-//           expect(res.body.message).to.equal('Blog post deleted successfully.');
-//           done();
-//         });
-//     });
-//   });
+ // Test the deletion of a blog post
+  describe('DELETE /blog/delete/:id', function() {
+    it('should delete a specific blog post', function(done) {
+      const blogId = "640a4c87951305cfc1085e80";
+      chai.request(app)
+        .delete(`/blog/delete/${blogId}`)
+        .end(function(err, res) {
+          expect(res).to.have.status(200);
+          expect(res.body.message).to.equal('Blog post deleted successfully.');
+          
+        });
+       done(); 
+    });
+  });
 
   });
