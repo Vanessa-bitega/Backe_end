@@ -1,4 +1,5 @@
-name: gitActions
+
+name: integration
 on:
   pull_request:
   push:
@@ -7,30 +8,73 @@ on:
       - main
 jobs:
   build:
-    name: build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Install Dependencies
-      run: npm install
-  test:
-    name: run-unit test
+        cache: 'npm'
+    - run: npm i
+  unit-tests:
     runs-on: ubuntu-latest
+    env:
+      PORT: ${{secrets.PORT}}
+      SALT: ${{secrets.SALT}}
+      MONGODB_URL_TEST: ${{secrets.mydocs}}
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Install Dependencies
-      run: npm install
-    - name: test
-      run: npm run test
+        cache: 'npm'
+    - run: npm i
+    - run: npm run test
+
+
+
+# name: gitActions
+# on:
+#   pull_request:
+#   push:
+#     branches:
+#       - ft-integration
+#       - main
+# jobs:
+#   build:
+#     name: build
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Checkout Code
+#       uses: actions/checkout@v3
+#     - name: Use Node.js ${{ matrix.node-version }}
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: ${{ matrix.node-version }}
+#     - name: Install Dependencies
+#       run: npm install
+#   test:
+#     name: run-unit test
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Checkout Code
+#       uses: actions/checkout@v3
+#     - name: Use Node.js ${{ matrix.node-version }}
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: ${{ matrix.node-version }}
+#     - name: Install Dependencies
+#       run: npm install
+#     - name: test
+#       run: npm run test
 
        
