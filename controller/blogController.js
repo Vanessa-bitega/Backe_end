@@ -7,8 +7,8 @@ async function blogcontroller(req, res) {
     const { method } = req;
 
     if (method === 'POST') {
-      const { title, snippet, body } = req.body;
-      const newBlog = await Blog.create( {title, snippet, body} );
+      const { title, body } = req.body;
+      const newBlog = await Blog.create( {title, body} );
         res.status(201).json({
         message: 'New blog created successfully',
         data: newBlog,
@@ -34,10 +34,9 @@ async function blogcontroller(req, res) {
       }
     } else if (method === 'PUT') {
       const { id } = req.params;
-      const { title, snippet, body } = req.body;
+      const { title, body } = req.body;
       const blogToUpdate = await Blog.findByIdAndUpdate(id, {
         title,
-        snippet,
         body,
       });
       if (!blogToUpdate) {
