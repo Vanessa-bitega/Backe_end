@@ -1,18 +1,22 @@
 
 name: integration
+
 on:
-  pull_request:
   push:
-    branches:
-      - ft-integration
-      - main
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
@@ -20,16 +24,18 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - run: npm ci
     - run: npm i
-  unit-tests:
+    - run: npm run build 
+ unit-test:
+
     runs-on: ubuntu-latest
-    env:
-      PORT: ${{PORT}}
-      SALT: ${{SALT}}
-      MONGODB_URL_TEST: ${{mydocs}}
+
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
@@ -37,10 +43,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - run: npm ci
     - run: npm i
-    - run: npm run test
-
-
+    - run: npm run test 
+    
 
 # name: gitActions
 # on:
