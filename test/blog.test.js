@@ -19,8 +19,8 @@ describe('Blog API', function() {
                 .send({title: 'Test Post',body: 'This is a test post.'})                  
                 .then((err, res) => {
                     res.should.have.status(201);
-                    expect(res.body.title).to.equal('Test Post');
-                    expect(res.body.body).to.equal('This is a test post.');
+                    expect(res.body.title).to.equal('Test me');
+                    expect(res.body.body).to.equal('This is a test me.');
                     expect(res.body).to.have.property('_id');
                     blogId = res.body._id;
                     
