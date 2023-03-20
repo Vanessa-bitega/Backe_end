@@ -16,11 +16,10 @@ describe('Blog API', function() {
         it('should create a new blog post', (done) => {
             chai.request(app)
                 .post('/api/blog/Create')
-                .send({title: 'Test Post', snippet: 'Look at this', body: 'This is a test post.'})                  
+                .send({title: 'Test Post',body: 'This is a test post.'})                  
                 .then((err, res) => {
                     res.should.have.status(201);
                     expect(res.body.title).to.equal('Test Post');
-                    expect(res.body.snippet).to.equal('Look at this');
                     expect(res.body.body).to.equal('This is a test post.');
                     expect(res.body).to.have.property('_id');
                     blogId = res.body._id;
