@@ -3,7 +3,7 @@ on:
   pull_request:
   push:
     branches:
-      - ft-integration
+      - new-githubActions
       - main
 jobs:
   build:
@@ -32,5 +32,57 @@ jobs:
       run: npm install
     - name: test
       run: npm run test
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# name: gitActions
+# on:
+#   pull_request:
+#   push:
+#     branches:
+#       - ft-integration
+#       - main
+# jobs:
+#   build:
+#     name: build
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Checkout Code
+#       uses: actions/checkout@v3
+#     - name: Use Node.js ${{ matrix.node-version }}
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: ${{ matrix.node-version }}
+#     - name: Install Dependencies
+#       run: npm install
+#   test:
+#     name: run-unit test
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Checkout Code
+#       uses: actions/checkout@v3
+#     - name: Use Node.js ${{ matrix.node-version }}
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: ${{ matrix.node-version }}
+#     - name: Install Dependencies
+#       run: npm install
+#     - name: test
+#       run: npm run test
 
        
