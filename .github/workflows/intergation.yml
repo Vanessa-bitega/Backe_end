@@ -1,41 +1,48 @@
 name: gitActions
+
 on:
   pull_request:
   push:
     branches:
       - ft-integration
       - main
+
 jobs:
   build:
-    name: build
+    name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install Dependencies
-      run: npm install
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install Dependencies
+        run: npm install
+
   test:
-    name: run-unit test
+    name: Run Unit Tests
     runs-on: ubuntu-latest
-  env:
+    env:
       MONGODB_URL_TEST: ${{ secrets.MONGODB_URL_TEST }}
       SECRET_KEY: ${{ secrets.SECRET_KEY }}
-      NODE_ENV: ${{ secrets.NODE_ENV}}
+      NODE_ENV: ${{ secrets.NODE_ENV }}
       HOST: ${{ secrets.HOST }}
       PORT: ${{ secrets.PORT }}
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install Dependencies
-      run: npm install
-    - name: test
-      run: npm run test
-       
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Unit Tests
+        run: npm run test
