@@ -32,10 +32,9 @@ describe('Blog API', function() {
                     expect(res.body).to.have.property('_id');
                     blogId = res.body._id;
                     
-                });
-              done();   
+                });   
         });
-       
+        done();
     });
   });
 
