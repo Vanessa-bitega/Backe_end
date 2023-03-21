@@ -21,7 +21,7 @@ describe('Blog API', function() {
                 .then((err, res) => {
                     res.should.have.status(201);
                     expect(res.body.title).to.equal('Test suppe');
-                    expect(res.body.body).to.equal('This is a bread testing.');
+                    expect(res.body.body).to.equal('This is a bread testing.')
 
                 .send({title: 'Test Post',body: 'This is a test post.'})                  
                 .then((err, res) => {
@@ -37,6 +37,7 @@ describe('Blog API', function() {
         });
        
     });
+  });
 
 
   //Test the retrieval of all blog posts
@@ -108,4 +109,4 @@ describe('Blog API', function() {
     });
   });
 
-  });
+});  
